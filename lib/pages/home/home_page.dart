@@ -11,6 +11,7 @@ part 'movie_list_widget.dart';
 part 'trailer_list_widget.dart';
 
 class HomePage extends StatelessWidget {
+  static const routeName = "/home";
   const HomePage({Key? key}) : super(key: key);
 
   @override
@@ -31,7 +32,7 @@ class HomePage extends StatelessWidget {
               width: 8.0,
             ),
             const CircleAvatar(
-              backgroundColor: primarColor,
+              backgroundImage: AssetImage('images/profile.jpeg'),
               radius: 18.0,
             ),
             const SizedBox(

@@ -9,6 +9,7 @@ import '../../widgets/poster_background.dart';
 import '../ticket/ticket_sale_page.dart';
 
 class MovieDetailPage extends StatelessWidget {
+  static const String routeName = "/moiveDetail";
   final MovieModel movie;
   const MovieDetailPage({Key? key, required this.movie}) : super(key: key);
 
@@ -115,10 +116,12 @@ class MovieDetailPage extends StatelessWidget {
           AppButton(
               text: 'Buy ticket',
               onPressed: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (_) => TicketSalePage(
-                          movie: movie,
-                        )));
+                Navigator.of(context)
+                    .pushNamed(TicketSalePage.routeName, arguments: movie);
+                // Navigator.of(context).push(MaterialPageRoute(
+                //     builder: (_) => TicketSalePage(
+                //           movie: movie,
+                //         )));
               })
         ],
       ),

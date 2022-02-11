@@ -75,8 +75,8 @@ class MovieItemWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.of(context).push(
-            MaterialPageRoute(builder: (_) => MovieDetailPage(movie: movie)));
+        Navigator.of(context)
+            .pushNamed(MovieDetailPage.routeName, arguments: movie);
       },
       child: AspectRatio(
           aspectRatio: 0.44,

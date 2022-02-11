@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'pages/home/home_page.dart';
+import 'config/colors.dart';
+import 'config/navigator.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,9 +19,10 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Cinema Ticket App Ui',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const HomePage(),
+          primaryColor: primarColor,
+          backgroundColor: backgroundColor,
+          scaffoldBackgroundColor: backgroundColor),
+      onGenerateRoute: onGenerateRoute,
     );
   }
 }

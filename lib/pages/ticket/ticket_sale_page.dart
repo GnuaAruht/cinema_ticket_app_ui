@@ -1,11 +1,11 @@
 import 'dart:ui';
 
-import 'package:cinema_ticket_app/data/movie_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../config/colors.dart';
 import '../../data/date_model.dart';
+import '../../data/movie_model.dart';
 import '../../widgets/app_button.dart';
 import '../../widgets/poster_background.dart';
 
@@ -24,6 +24,7 @@ final numberOfSeat = [
 ];
 
 class TicketSalePage extends StatelessWidget {
+  static const routeName = "/ticketSale";
   final MovieModel movie;
   const TicketSalePage({Key? key, required this.movie}) : super(key: key);
 
