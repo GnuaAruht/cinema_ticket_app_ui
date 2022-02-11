@@ -2,8 +2,10 @@ part of './home_page.dart';
 
 class TrailerListWidget extends StatelessWidget {
   final Size size;
+  final List<String> trailerUrls;
   const TrailerListWidget({
     Key? key,
+    required this.trailerUrls,
     required this.size,
   }) : super(key: key);
 
@@ -39,7 +41,7 @@ class TrailerListWidget extends StatelessWidget {
           SizedBox(
             height: size.height * 0.24,
             child: ListView.separated(
-              itemCount: 3,
+              itemCount: trailerUrls.length,
               scrollDirection: Axis.horizontal,
               padding:
                   const EdgeInsets.symmetric(horizontal: 16.0, vertical: 10.0),
@@ -49,7 +51,7 @@ class TrailerListWidget extends StatelessWidget {
               ),
               itemBuilder: (context, index) {
                 return _TrailerItemWidget(
-                  index: index,
+                  trailerUrl: trailerUrls[index],
                 );
               },
             ),
@@ -61,11 +63,10 @@ class TrailerListWidget extends StatelessWidget {
 }
 
 class _TrailerItemWidget extends StatelessWidget {
-  final int index;
-
+  final String trailerUrl;
   const _TrailerItemWidget({
     Key? key,
-    required this.index,
+    required this.trailerUrl,
   }) : super(key: key);
 
   @override
@@ -80,7 +81,7 @@ class _TrailerItemWidget extends StatelessWidget {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(10.0),
                 child: Image.asset(
-                  'images/trailer_poster.jpg',
+                  trailerUrl,
                   fit: BoxFit.cover,
                 ),
               ),

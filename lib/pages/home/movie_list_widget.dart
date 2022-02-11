@@ -4,11 +4,13 @@ class MovieListWidget extends StatelessWidget {
   final String title;
   final VoidCallback onViewAll;
   final Size size;
+  final List<MovieModel> movies;
   const MovieListWidget(
       {Key? key,
       required this.size,
       required this.title,
-      required this.onViewAll})
+      required this.onViewAll,
+      required this.movies})
       : super(key: key);
 
   @override
@@ -46,7 +48,7 @@ class MovieListWidget extends StatelessWidget {
           SizedBox(
             height: size.height * 0.36,
             child: ListView.separated(
-              itemCount: 5,
+              itemCount: movies.length,
               scrollDirection: Axis.horizontal,
               padding:
                   const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
@@ -55,7 +57,7 @@ class MovieListWidget extends StatelessWidget {
                 width: 12.0,
               ),
               itemBuilder: (context, index) {
-                return const MovieItemWidget();
+                return MovieItemWidget(movie: movies[index]);
               },
             ),
           )
@@ -66,16 +68,15 @@ class MovieListWidget extends StatelessWidget {
 }
 
 class MovieItemWidget extends StatelessWidget {
-  const MovieItemWidget({
-    Key? key,
-  }) : super(key: key);
+  final MovieModel movie;
+  const MovieItemWidget({Key? key, required this.movie}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.of(context)
-            .push(MaterialPageRoute(builder: (_) => const MovieDetailPage()));
+        Navigator.of(context).push(
+            MaterialPageRoute(builder: (_) => MovieDetailPage(movie: movie)));
       },
       child: AspectRatio(
           aspectRatio: 0.44,
@@ -85,7 +86,7 @@ class MovieItemWidget extends StatelessWidget {
               ClipRRect(
                 borderRadius: BorderRadius.circular(10.0),
                 child: Image.asset(
-                  'images/poster1.jpg',
+                  movie.posterUrl,
                   height: 200,
                   width: 140,
                   fit: BoxFit.cover,
@@ -95,7 +96,7 @@ class MovieItemWidget extends StatelessWidget {
                 height: 12.0,
               ),
               Text(
-                'House of Gucci',
+                movie.title,
                 maxLines: 2,
                 style: Theme.of(context).textTheme.bodyText1!.copyWith(
                     color: Colors.white, overflow: TextOverflow.ellipsis),

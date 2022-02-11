@@ -1,3 +1,4 @@
+import 'package:cinema_ticket_app/data/movie_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -5,9 +6,11 @@ import '../../config/colors.dart';
 import '../../widgets/app_button.dart';
 import '../../widgets/play_button.dart';
 import '../../widgets/poster_background.dart';
+import '../ticket/ticket_sale_page.dart';
 
 class MovieDetailPage extends StatelessWidget {
-  const MovieDetailPage({Key? key}) : super(key: key);
+  final MovieModel movie;
+  const MovieDetailPage({Key? key, required this.movie}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,8 +26,11 @@ class MovieDetailPage extends StatelessWidget {
               top: 0.0,
               left: 0.0,
               right: 0.0,
-              child: PosterBackground(size: size)),
-          Positioned(child: _buildContent()),
+              child: PosterBackground(
+                size: size,
+                posterUrl: movie.posterUrl,
+              )),
+          Positioned(child: _buildContent(context, movie)),
         ],
       ),
     );
@@ -42,7 +48,7 @@ class MovieDetailPage extends StatelessWidget {
     );
   }
 
-  Padding _buildContent() {
+  Padding _buildContent(BuildContext context, MovieModel movie) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 18.0),
       child: Column(
@@ -55,10 +61,10 @@ class MovieDetailPage extends StatelessWidget {
           const SizedBox(
             height: 18.0,
           ),
-          const Text(
-            'House of Gucci',
+          Text(
+            movie.title,
             textAlign: TextAlign.center,
-            style: TextStyle(
+            style: const TextStyle(
                 fontSize: 24.0,
                 color: Colors.white,
                 fontWeight: FontWeight.bold),
@@ -87,7 +93,7 @@ class MovieDetailPage extends StatelessWidget {
             height: 28.0,
           ),
           const Text(
-            'Storyline',
+            'Overview',
             style: TextStyle(
                 fontSize: 24.0,
                 fontWeight: FontWeight.bold,
@@ -96,17 +102,24 @@ class MovieDetailPage extends StatelessWidget {
           const SizedBox(
             height: 20.0,
           ),
-          const Text(
-            'The film completes the incredible story of the SkyWalker family,which has been going on for over forty years, and promise to give answer to all the riddle of preivous series.',
+          Text(
+            movie.overview,
             textAlign: TextAlign.center,
-            style: TextStyle(
+            style: const TextStyle(
                 fontSize: 16.0,
                 color: Colors.white,
                 fontWeight: FontWeight.w500,
                 wordSpacing: 1.8),
           ),
           const Spacer(),
-          AppButton(text: 'Buy ticket', onPressed: () {})
+          AppButton(
+              text: 'Buy ticket',
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (_) => TicketSalePage(
+                          movie: movie,
+                        )));
+              })
         ],
       ),
     );

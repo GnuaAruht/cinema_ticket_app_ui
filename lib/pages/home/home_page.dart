@@ -1,3 +1,5 @@
+import 'package:cinema_ticket_app/data/movie_model.dart';
+import 'package:cinema_ticket_app/data/temp_data.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -43,16 +45,23 @@ class HomePage extends StatelessWidget {
             children: [
               TrailerListWidget(
                 size: size,
+                trailerUrls: trailerUrls,
               ),
               MovieListWidget(
                 size: size,
                 title: 'Now in Cinemas',
                 onViewAll: () {},
+                movies: inCinemaMovies
+                    .map((json) => MovieModel.fromJson(json))
+                    .toList(),
               ),
               MovieListWidget(
                 size: size,
                 title: 'Coming soon',
                 onViewAll: () {},
+                movies: comingSoonMovies
+                    .map((json) => MovieModel.fromJson(json))
+                    .toList(),
               ),
             ],
           ),

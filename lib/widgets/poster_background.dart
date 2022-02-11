@@ -4,7 +4,10 @@ import '../config/colors.dart';
 
 class PosterBackground extends StatelessWidget {
   final Size size;
-  const PosterBackground({Key? key, required this.size}) : super(key: key);
+  final String posterUrl;
+  const PosterBackground(
+      {Key? key, required this.size, required this.posterUrl})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +18,7 @@ class PosterBackground extends StatelessWidget {
         fit: StackFit.expand,
         children: [
           Image.asset(
-            'images/poster1.jpg',
+            posterUrl,
             fit: BoxFit.fitWidth,
           ),
           DecoratedBox(
