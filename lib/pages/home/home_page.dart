@@ -1,9 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../config/colors.dart';
-import '../widgets/movie_list_widget.dart';
-import '../widgets/trailer_list_widget.dart';
+import '../../config/colors.dart';
+import '../../widgets/play_button.dart';
+import '../detail/movie_detail_page.dart';
+
+part 'movie_list_widget.dart';
+part 'trailer_list_widget.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);

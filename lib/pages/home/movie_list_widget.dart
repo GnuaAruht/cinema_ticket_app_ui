@@ -1,5 +1,4 @@
-import 'package:cinema_ticket_app/config/colors.dart';
-import 'package:flutter/material.dart';
+part of './home_page.dart';
 
 class MovieListWidget extends StatelessWidget {
   final String title;
@@ -74,7 +73,10 @@ class MovieItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        Navigator.of(context)
+            .push(MaterialPageRoute(builder: (_) => const MovieDetailPage()));
+      },
       child: AspectRatio(
           aspectRatio: 0.44,
           child: Column(
@@ -106,15 +108,6 @@ class MovieItemWidget extends StatelessWidget {
                 width: 80,
                 color: primarColor,
               )
-              // RatingBar.builder(
-              //     itemCount: 5,
-              //     initialRating: 4.5,
-              //     itemSize: 18.0,
-              //     itemBuilder: (context, index) => const Icon(
-              //           Icons.star_rate_rounded,
-              //           color: primarColor,
-              //         ),
-              //     onRatingUpdate: (_) {})
             ],
           )),
     );

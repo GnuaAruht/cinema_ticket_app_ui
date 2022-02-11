@@ -1,6 +1,4 @@
-import 'dart:ui';
-
-import 'package:flutter/material.dart';
+part of './home_page.dart';
 
 class TrailerListWidget extends StatelessWidget {
   final Size size;
@@ -87,23 +85,8 @@ class _TrailerItemWidget extends StatelessWidget {
                 ),
               ),
             ),
-            Center(
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(50.0),
-                child: BackdropFilter(
-                  filter: ImageFilter.blur(sigmaX: 6.0, sigmaY: 6.0),
-                  child: Container(
-                    width: 50,
-                    height: 50,
-                    color: Colors.white38,
-                    child: const Icon(
-                      Icons.play_arrow_rounded,
-                      color: Colors.white,
-                      size: 38,
-                    ),
-                  ),
-                ),
-              ),
+            const Center(
+              child: PlayButton(buttonSize: 42),
             )
           ],
         ),
