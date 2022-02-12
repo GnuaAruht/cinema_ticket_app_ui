@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 import '../../config/colors.dart';
 import '../../data/movie_model.dart';
@@ -73,12 +74,21 @@ class MovieDetailPage extends StatelessWidget {
           const SizedBox(
             height: 8.0,
           ),
-          // temp for rating bar
-          Container(
-            height: 18.0,
-            width: 100.0,
-            color: primarColor,
-          ),
+          // // temp for rating bar
+          // Container(
+          //   height: 18.0,
+          //   width: 100.0,
+          //   color: primarColor,
+          // ),
+          RatingBar.builder(
+              itemCount: 5,
+              initialRating: 4.5,
+              itemSize: 24.0,
+              itemBuilder: (context, index) => const Icon(
+                    Icons.star_rate_rounded,
+                    color: primarColor,
+                  ),
+              onRatingUpdate: (_) {}),
           const SizedBox(
             height: 12.0,
           ),

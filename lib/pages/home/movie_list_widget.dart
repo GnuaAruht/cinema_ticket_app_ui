@@ -104,11 +104,15 @@ class MovieItemWidget extends StatelessWidget {
               const SizedBox(
                 height: 6.0,
               ),
-              Container(
-                height: 16,
-                width: 80,
-                color: primarColor,
-              )
+              RatingBar.builder(
+                  itemCount: 5,
+                  initialRating: 4.5,
+                  itemSize: 18.0,
+                  itemBuilder: (context, index) => const Icon(
+                        Icons.star_rate_rounded,
+                        color: primarColor,
+                      ),
+                  onRatingUpdate: (_) {}),
             ],
           )),
     );
