@@ -1,11 +1,13 @@
 import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../../config/colors.dart';
 import '../../data/date_model.dart';
 import '../../data/movie_model.dart';
+import '../../data/temp_data.dart';
 import '../../widgets/app_button.dart';
 import '../../widgets/poster_background.dart';
 
@@ -69,11 +71,15 @@ class TicketSalePage extends StatelessWidget {
               children: [
                 SizedBox(
                   height: size.height * 0.14,
-                  child: const DateList(),
+                  child: DateList(
+                    dateList: tempDateList,
+                  ),
                 ),
                 SizedBox(
                   height: size.height * 0.072,
-                  child: const TimeListWidget(),
+                  child: TimeListWidget(
+                    timeList: tempTimeList,
+                  ),
                 ),
                 ScreenWidget(size: size),
                 SizedBox(

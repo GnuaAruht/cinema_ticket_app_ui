@@ -1,17 +1,8 @@
 part of 'ticket_sale_page.dart';
 
-final dateModelList = [
-  DateModel(8, 'Thu'),
-  DateModel(9, 'Fri'),
-  DateModel(10, 'Sat'),
-  DateModel(11, 'Sun'),
-  DateModel(12, 'Mon')
-];
-
 class DateList extends StatefulWidget {
-  const DateList({
-    Key? key,
-  }) : super(key: key);
+  final List<DateModel> dateList;
+  const DateList({Key? key, required this.dateList}) : super(key: key);
 
   @override
   State<DateList> createState() => _DateListState();
@@ -23,7 +14,7 @@ class _DateListState extends State<DateList> {
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
-      itemCount: dateModelList.length,
+      itemCount: widget.dateList.length,
       scrollDirection: Axis.horizontal,
       physics: const BouncingScrollPhysics(),
       padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 10.0),
@@ -42,9 +33,9 @@ class _DateListState extends State<DateList> {
           },
           child: index == _selectedIndex
               ? _SelectedDateItemWidget(
-                  dateModel: dateModelList[index],
+                  dateModel: tempDateList[index],
                 )
-              : _DateItemWidget(dateModel: dateModelList[index]),
+              : _DateItemWidget(dateModel: tempDateList[index]),
         );
       },
     );

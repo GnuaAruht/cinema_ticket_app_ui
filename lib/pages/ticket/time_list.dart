@@ -1,9 +1,8 @@
 part of 'ticket_sale_page.dart';
 
 class TimeListWidget extends StatefulWidget {
-  const TimeListWidget({
-    Key? key,
-  }) : super(key: key);
+  final List<String> timeList;
+  const TimeListWidget({Key? key, required this.timeList}) : super(key: key);
 
   @override
   State<TimeListWidget> createState() => _TimeListWidgetState();
@@ -15,7 +14,7 @@ class _TimeListWidgetState extends State<TimeListWidget> {
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
-      itemCount: 5,
+      itemCount: widget.timeList.length,
       physics: const BouncingScrollPhysics(),
       scrollDirection: Axis.horizontal,
       padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 16.0),
@@ -40,9 +39,9 @@ class _TimeListWidgetState extends State<TimeListWidget> {
                 }
               });
             },
-            child: const Text(
-              '11:30 AM',
-              style: TextStyle(fontWeight: FontWeight.w600),
+            child: Text(
+              widget.timeList[index],
+              style: const TextStyle(fontWeight: FontWeight.w600),
             ));
       },
     );

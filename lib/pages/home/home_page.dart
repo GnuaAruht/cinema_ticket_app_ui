@@ -1,9 +1,9 @@
-import 'package:cinema_ticket_app/data/movie_model.dart';
-import 'package:cinema_ticket_app/data/temp_data.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../config/colors.dart';
+import '../../data/movie_model.dart';
+import '../../data/temp_data.dart';
 import '../../widgets/play_button.dart';
 import '../detail/movie_detail_page.dart';
 
@@ -52,17 +52,13 @@ class HomePage extends StatelessWidget {
                 size: size,
                 title: 'Now in Cinemas',
                 onViewAll: () {},
-                movies: inCinemaMovies
-                    .map((json) => MovieModel.fromJson(json))
-                    .toList(),
+                movies: inCinemaMovies,
               ),
               MovieListWidget(
                 size: size,
                 title: 'Coming soon',
                 onViewAll: () {},
-                movies: comingSoonMovies
-                    .map((json) => MovieModel.fromJson(json))
-                    .toList(),
+                movies: comingSoonMovies,
               ),
             ],
           ),

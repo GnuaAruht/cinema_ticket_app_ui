@@ -1,8 +1,8 @@
-import 'package:cinema_ticket_app/data/movie_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../config/colors.dart';
+import '../../data/movie_model.dart';
 import '../../widgets/app_button.dart';
 import '../../widgets/play_button.dart';
 import '../../widgets/poster_background.dart';
@@ -118,10 +118,6 @@ class MovieDetailPage extends StatelessWidget {
               onPressed: () {
                 Navigator.of(context)
                     .pushNamed(TicketSalePage.routeName, arguments: movie);
-                // Navigator.of(context).push(MaterialPageRoute(
-                //     builder: (_) => TicketSalePage(
-                //           movie: movie,
-                //         )));
               })
         ],
       ),
