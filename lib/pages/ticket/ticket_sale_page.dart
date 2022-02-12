@@ -1,13 +1,13 @@
 import 'dart:ui';
 
+import 'package:cinema_ticket_app/data/model/seat_model.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../../config/colors.dart';
-import '../../data/date_model.dart';
-import '../../data/movie_model.dart';
-import '../../data/temp_data.dart';
+import '../../data/model/date_model.dart';
+import '../../data/model/movie_model.dart';
+import '../../data/sample_data.dart';
 import '../../widgets/app_button.dart';
 import '../../widgets/poster_background.dart';
 
@@ -15,15 +15,6 @@ part 'date_list.dart';
 part 'screen.dart';
 part 'seat_layout.dart';
 part 'time_list.dart';
-
-final numberOfSeat = [
-  [0, 0, 1, 0, 1],
-  [0, 0, 0, 1, 0, 1, 0],
-  [1, 0, 0, 1, 0, 1, 1, 0],
-  [0, 1, 1, 0, 0, 1, 0],
-  [0, 1, 0, 0, 0, 1, 0, 0],
-  [0, 0, 1, 0, 0]
-];
 
 class TicketSalePage extends StatelessWidget {
   static const routeName = "/ticketSale";
@@ -84,9 +75,11 @@ class TicketSalePage extends StatelessWidget {
                 ScreenWidget(size: size),
                 SizedBox(
                   height: size.height * 0.46,
-                  child: const Align(
+                  child: Align(
                     alignment: Alignment.center,
-                    child: SeatLayoutWidget(),
+                    child: SeatLayoutWidget(
+                      seatData: sampleSeatData,
+                    ),
                   ),
                 ),
                 const Spacer(),

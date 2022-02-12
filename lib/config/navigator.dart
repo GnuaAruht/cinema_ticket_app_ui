@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../data/movie_model.dart';
+import '../data/model/movie_model.dart';
 import '../pages/detail/movie_detail_page.dart';
 import '../pages/home/home_page.dart';
 import '../pages/ticket/ticket_sale_page.dart';

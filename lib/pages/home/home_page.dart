@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 import '../../config/colors.dart';
-import '../../data/movie_model.dart';
-import '../../data/temp_data.dart';
+import '../../data/model/movie_model.dart';
+import '../../data/sample_data.dart';
 import '../../widgets/play_button.dart';
 import '../detail/movie_detail_page.dart';
 

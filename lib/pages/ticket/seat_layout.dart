@@ -1,9 +1,8 @@
 part of 'ticket_sale_page.dart';
 
 class SeatLayoutWidget extends StatelessWidget {
-  const SeatLayoutWidget({
-    Key? key,
-  }) : super(key: key);
+  final List<List<SeatModel>> seatData;
+  const SeatLayoutWidget({Key? key, required this.seatData}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +12,7 @@ class SeatLayoutWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisSize: MainAxisSize.min,
         children: [
-          ...numberOfSeat
+          ...seatData
               .map((seats) => Row(
                     mainAxisSize: MainAxisSize.min,
                     children: seats
@@ -86,7 +85,7 @@ class SeatLayoutWidget extends StatelessWidget {
 }
 
 class SeatWidget extends StatelessWidget {
-  final int seat;
+  final SeatModel seat;
   const SeatWidget({Key? key, required this.seat}) : super(key: key);
 
   @override
@@ -96,10 +95,10 @@ class SeatWidget extends StatelessWidget {
       height: 26.0,
       margin: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 8.0),
       decoration: BoxDecoration(
-          color: seat == 1 ? Colors.white : Colors.white30,
+          color: seat.isFree ? Colors.white : Colors.white30,
           borderRadius: BorderRadius.circular(8.0)),
       child: InkWell(
-        onTap: seat == 1 ? () {} : null,
+        onTap: seat.isFree ? () {} : null,
         child: CustomPaint(
           painter: SeatPainter(),
         ),

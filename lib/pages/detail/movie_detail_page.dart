@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 import '../../config/colors.dart';
-import '../../data/movie_model.dart';
+import '../../data/model/movie_model.dart';
 import '../../widgets/app_button.dart';
 import '../../widgets/play_button.dart';
 import '../../widgets/poster_background.dart';
@@ -74,12 +74,6 @@ class MovieDetailPage extends StatelessWidget {
           const SizedBox(
             height: 8.0,
           ),
-          // // temp for rating bar
-          // Container(
-          //   height: 18.0,
-          //   width: 100.0,
-          //   color: primarColor,
-          // ),
           RatingBar.builder(
               itemCount: 5,
               initialRating: 4.5,
@@ -92,10 +86,10 @@ class MovieDetailPage extends StatelessWidget {
           const SizedBox(
             height: 12.0,
           ),
-          const Text(
-            '2019 | 2 h 34 min | Fantasy,Sci-fi',
+          Text(
+            '${movie.year} | ${movie.duration} | ${movie.genres}',
             textAlign: TextAlign.center,
-            style: TextStyle(
+            style: const TextStyle(
                 fontSize: 16.0,
                 color: Colors.white,
                 fontWeight: FontWeight.w500),
